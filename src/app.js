@@ -17,27 +17,30 @@ app.set('view engine', 'hbs')
 app.set('views', viewPath)
 hbs.registerPartials(partialsPath)
 
+//constants
+const name = 'Abhishek Kanparia'
+
 //Setup static directory to serve
 app.use(express.static(publicDirPath))
 
 app.get('', (req, res) => {
   res.render('index', {
     title: 'Weather',
-    name: 'Abhishek',
+    name,
   })
 })
 
 app.get('/about', (req, res) => {
   res.render('about', {
     title: 'About',
-    name: 'Abhishek',
+    name,
   })
 })
 
 app.get('/help', (req, res) => {
   res.render('help', {
     title: 'Help',
-    name: 'Abhishek',
+    name,
     helpMsg: 'help text here',
   })
 })
@@ -71,7 +74,7 @@ app.get('/weather', (req, res) => {
 
 app.get('/help/*', (req, res) => {
   res.render('404', {
-    name: 'Abhishek',
+    name,
     title: '404',
     errorMsg: 'Help article not found',
   })
@@ -79,7 +82,7 @@ app.get('/help/*', (req, res) => {
 
 app.get('*', (req, res) => {
   res.render('404', {
-    name: 'Abhishek',
+    name,
     title: '404',
     errorMsg: 'Page not found',
   })
